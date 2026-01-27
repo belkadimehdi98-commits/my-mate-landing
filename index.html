@@ -380,11 +380,13 @@ modal.addEventListener("click", (e) => {
 
 
 </script>
-<script src="https://forminit.com/sdk/v1/forminit.js"></script>
+<script src="https://app.forminit.com/sdk/v1/forminit.js"></script>
 <script>
-  const forminit = new Forminit();
-  const FORM_ID = "ykhqej2ryc6";
+  const forminit = new Forminit({
+    baseUrl: "https://app.forminit.com"
+  });
 
+  const FORM_ID = "ykhqej2ryc6";
   const form = document.getElementById("contact-form");
   const statusEl = document.getElementById("form-status");
   const btn = form.querySelector('button[type="submit"]');
@@ -409,6 +411,7 @@ modal.addEventListener("click", (e) => {
     form.reset();
   });
 </script>
+
 
 
 
