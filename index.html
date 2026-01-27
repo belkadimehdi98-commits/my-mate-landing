@@ -253,7 +253,7 @@
     <div class="footer-center">
       <a href="#privacy">Privacy</a>
       <a href="#terms">Terms</a>
-      <a href="mailto:support@mymate.app">Contact</a>
+<a href="#" id="open-contact">Contact</a>
     </div>
 
     <div class="footer-right">
@@ -261,7 +261,23 @@
     </div>
   </div>
 </footer>
+
+<div id="contact-modal" class="contact-modal hidden">
+  <div class="contact-box">
+    <h3>Send a message</h3>
+
+    <input type="text" id="c-name" placeholder="Your name">
+    <input type="email" id="c-email" placeholder="Your email">
+    <textarea id="c-message" placeholder="Write your message..."></textarea>
+
+    <button id="send-contact">Send Message</button>
+
+    <div id="contact-toast" class="contact-toast hidden"></div>
+  </div>
+</div>
+
 <section id="terms" class="legal hidden">
+
 
   <h2>Terms</h2>
 
@@ -336,6 +352,22 @@
 
   toggleSection('a[href="#privacy"]', 'privacy');
   toggleSection('a[href="#terms"]', 'terms');
+// Contact modal open / close
+const openBtn = document.getElementById("open-contact");
+const modal = document.getElementById("contact-modal");
+
+openBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  modal.classList.remove("hidden");
+});
+
+// Close when clicking outside the box
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.add("hidden");
+  }
+});
+
 </script>
 
 
