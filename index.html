@@ -266,16 +266,15 @@
   <div class="contact-box">
     <h3>Send a message</h3>
 
-<form action="https://submit.forminit.com/ykhqej2ryc6" method="POST">
-
-  <input type="hidden" name="_subject" value="My Mate Contact">
-
-  <input type="text" name="name" placeholder="Your name" required>
-  <input type="email" name="email" placeholder="Your email" required>
-  <textarea name="message" placeholder="Write your message..." required></textarea>
-
+<form id="contact-form">
+  <input type="text" name="fi-sender-firstName" placeholder="Your name" required>
+  <input type="email" name="fi-sender-email" placeholder="Your email" required>
+  <textarea name="fi-text-message" placeholder="Write your message..." required></textarea>
   <button type="submit">Send Message</button>
 </form>
+
+<p id="form-status"></p>
+
 
 
 
@@ -380,6 +379,35 @@ modal.addEventListener("click", (e) => {
 
 
 
+</script>
+<script src="https://forminit.com/sdk/v1/forminit.js"></script>
+<script>
+  const forminit = new Forminit();
+  const FORM_ID = "ykhqej2ryc6";
+
+  const form = document.getElementById("contact-form");
+  const statusEl = document.getElementById("form-status");
+  const btn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    btn.disabled = true;
+    statusEl.textContent = "Sending...";
+
+    const formData = new FormData(form);
+    const { data, error } = await forminit.submit(FORM_ID, formData);
+
+    btn.disabled = false;
+
+    if (error) {
+      statusEl.textContent = "Error: " + error.message;
+      return;
+    }
+
+    statusEl.textContent = "Message sent ✅";
+    form.reset();
+  });
 </script>
 
 
