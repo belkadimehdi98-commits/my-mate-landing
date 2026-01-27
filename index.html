@@ -266,15 +266,16 @@
   <div class="contact-box">
     <h3>Send a message</h3>
 
-    <form action="https://app.forminit.com/f/ykhqej2ryc6" method="POST">
+<form id="contact-form" action="https://app.forminit.com/f/ykhqej2ryc6" method="POST">
 
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <textarea name="message" placeholder="Write your message..." required></textarea>
+  <input id="c-name" type="text" name="name" placeholder="Your name" required>
+  <input id="c-email" type="email" name="email" placeholder="Your email" required>
+  <textarea id="c-message" name="message" placeholder="Write your message..." required></textarea>
 
-      <button type="submit">Send Message</button>
+  <button id="send-contact" type="submit">Send Message</button>
 
-    </form>
+</form>
+
 
     <div id="contact-toast" class="contact-toast hidden"></div>
   </div>
@@ -372,6 +373,36 @@ modal.addEventListener("click", (e) => {
     modal.classList.add("hidden");
   }
 });
+
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("c-name").value.trim();
+  const email = document.getElementById("c-email").value.trim();
+  const message = document.getElementById("c-message").value.trim();
+
+  if (!name || !email || !message) {
+    alert("Please fill all fields.");
+    return;
+  }
+
+  const res = await fetch(form.action, {
+    method: "POST",
+    headers: { "Accept": "application/json" },
+    body: new FormData(form)
+  });
+
+  if (res.ok) {
+    form.reset();
+    document.getElementById("contact-modal").classList.add("hidden");
+    alert("Message sent!");
+  } else {
+    alert("Failed to send.");
+  }
+});
+
 
 </script>
 
