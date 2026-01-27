@@ -266,15 +266,20 @@
   <div class="contact-box">
     <h3>Send a message</h3>
 
-    <input type="text" id="c-name" placeholder="Your name">
-    <input type="email" id="c-email" placeholder="Your email">
-    <textarea id="c-message" placeholder="Write your message..."></textarea>
+    <form action="https://app.forminit.com/f/ykhqej2ryc6" method="POST">
 
-    <button id="send-contact">Send Message</button>
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" placeholder="Write your message..." required></textarea>
+
+      <button type="submit">Send Message</button>
+
+    </form>
 
     <div id="contact-toast" class="contact-toast hidden"></div>
   </div>
 </div>
+
 
 <section id="terms" class="legal hidden">
 
