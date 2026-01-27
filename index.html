@@ -380,37 +380,7 @@ modal.addEventListener("click", (e) => {
 
 
 </script>
-<script src="https://cdn.forminit.com/forminit.min.js"></script>
-<script>
-  const forminit = new Forminit({
-    baseUrl: "https://app.forminit.com"
-  });
 
-  const FORM_ID = "ykhqej2ryc6";
-  const form = document.getElementById("contact-form");
-  const statusEl = document.getElementById("form-status");
-  const btn = form.querySelector('button[type="submit"]');
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    btn.disabled = true;
-    statusEl.textContent = "Sending...";
-
-    const formData = new FormData(form);
-    const { data, error } = await forminit.submit(FORM_ID, formData);
-
-    btn.disabled = false;
-
-    if (error) {
-      statusEl.textContent = "Error: " + error.message;
-      return;
-    }
-
-    statusEl.textContent = "Message sent ✅";
-    form.reset();
-  });
-</script>
 
 
 
