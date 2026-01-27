@@ -360,6 +360,21 @@
 
   toggleSection('a[href="#privacy"]', 'privacy');
   toggleSection('a[href="#terms"]', 'terms');
+// Contact modal open / close
+const openBtn = document.getElementById("open-contact");
+const modal = document.getElementById("contact-modal");
+
+openBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  modal.classList.remove("hidden");
+});
+
+// Close when clicking outside the box
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.add("hidden");
+  }
+});
 
 
 
