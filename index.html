@@ -266,14 +266,16 @@
   <div class="contact-box">
     <h3>Send a message</h3>
 
-<form action="https://formspree.io/f/mnjdenpb" method="POST">
-  <input type="text" name="fi-sender-firstName" placeholder="Your name" required>
-  <input type="email" name="fi-sender-email" placeholder="Your email" required>
-  <textarea name="fi-text-message" placeholder="Write your message..." required></textarea>
+<form id="contact-form" action="https://formspree.io/f/mnjdenpb" method="POST">
+  <input type="text" name="name" placeholder="Your name" required>
+  <input type="email" name="email" placeholder="Your email" required>
+  <textarea name="message" placeholder="Write your message..." required></textarea>
+
   <button type="submit">Send Message</button>
 </form>
 
-<p id="form-status"></p>
+<p id="form-status" class="form-status"></p>
+
 
 
 
@@ -383,40 +385,45 @@ modal.addEventListener("click", (e) => {
 
 
 
-<script src="https://app.forminit.com/sdk/v1/forminit.js"></script>
+
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const forminit = new Forminit({
-    baseUrl: "https://app.forminit.com"
-  });
+const form = document.getElementById("contact-form");
+const status = document.getElementById("form-status");
 
-  const FORM_ID = "ykhqej2ryc6";
-  const form = document.getElementById("contact-form");
-  const statusEl = document.getElementById("form-status");
-  const btn = form.querySelector('button[type="submit"]');
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  status.textContent = "Sending...";
+  status.style.opacity = "1";
 
-    btn.disabled = true;
-    statusEl.textContent = "Sending...";
+  const data = new FormData(form);
 
-    const formData = new FormData(form);
-    const { error } = await forminit.submit(FORM_ID, formData);
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: data,
+      headers: { "Accept": "application/json" }
+    });
 
-    btn.disabled = false;
-
-    if (error) {
-      statusEl.textContent = "❌ Error sending message";
-      return;
+    if (response.ok) {
+status.innerHTML = `
+  <span class="sent-icon">✔</span>
+  <span>Message sent</span>
+`;
+      form.reset(); // 🔥 clears fields
+    } else {
+      status.textContent = "❌ Failed to send. Try again.";
     }
+  } catch (err) {
+    status.textContent = "❌ Network error. Try later.";
+  }
 
-    statusEl.textContent = "Message sent ✅";
-    form.reset();
-  });
+  // Auto-hide message (pro touch)
+  setTimeout(() => {
+    status.style.opacity = "0";
+  }, 4000);
 });
 </script>
-
 
 
 </body>
