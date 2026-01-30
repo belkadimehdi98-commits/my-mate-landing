@@ -422,4 +422,58 @@ h1 {
   font-weight: bold;
   cursor: pointer;
 }
+.form-status {
+  margin-top: 14px;
+  font-size: 14px;
+  color: #7CFFB2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.form-status .sent-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2ecc71;
+  color: #0e0e0e;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  body {
+    padding: 0 16px;
+  }
+
+  h1 {
+    font-size: 28px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .download {
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .testimonials-track {
+    flex-direction: column;
+  }
+
+  .testimonial-card {
+    width: 100%;
+  }
+}
 
