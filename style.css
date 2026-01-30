@@ -495,4 +495,38 @@ h1 {
     text-align: center;
   }
 }
+/* REAL MOBILE TUNING */
+@media (max-width: 480px) {
+
+  h1 {
+    font-size: 26px;
+  }
+
+  .problems h2,
+  .testimonials h2,
+  .final-cta h2 {
+    font-size: 24px;
+  }
+
+  .problem h3 {
+    font-size: 20px;
+    white-space: normal;
+  }
+
+  .problem p {
+    font-size: 16px;
+  }
+
+  .testimonial-card {
+    flex: 0 0 260px;
+  }
+
+  .testimonial-card p {
+    font-size: 15px;
+  }
+
+  .trust-line {
+    font-size: 13px;
+  }
+}
 
