@@ -529,4 +529,46 @@ h1 {
     font-size: 13px;
   }
 }
+/* ========= REAL MOBILE FIX ========= */
+@media (max-width: 480px) {
+
+  .hero {
+    padding: 48px 16px 24px;
+  }
+
+  .name {
+    font-size: 22px;
+  }
+
+  h1 {
+    font-size: 26px;
+    line-height: 1.25;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .trust-line {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+
+  .problem h3 {
+    font-size: 20px;
+    white-space: normal;
+  }
+
+  .problem p {
+    font-size: 15px;
+  }
+
+  .testimonial-card {
+    flex: 0 0 260px;
+  }
+
+  .final-cta h2 {
+    font-size: 26px;
+  }
+}
 
