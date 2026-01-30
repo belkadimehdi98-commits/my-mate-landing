@@ -21,9 +21,10 @@
       Desktop-first.
     </p>
 
-<a class="download" href="https://github.com/belkadimehdi98-commits/my-mate-app/releases/download/v0.1.0/My.Mate_0.1.0_x64_en-US.msi">
+<a class="download" id="download-btn" href="https://github.com/belkadimehdi98-commits/my-mate-app/releases/download/v0.1.0/My.Mate_0.1.0_x64_en-US.msi">
   Download My Mate
 </a>
+
 
 
 
@@ -236,9 +237,10 @@
     <li>Desktop-first, private by design</li>
   </ul>
 
-<a class="download" href="https://github.com/belkadimehdi98-commits/my-mate-app/releases/download/v0.1.0/My.Mate_0.1.0_x64_en-US.msi">
+<a class="download" id="download-btn" href="https://github.com/belkadimehdi98-commits/my-mate-app/releases/download/v0.1.0/My.Mate_0.1.0_x64_en-US.msi">
   Download My Mate
 </a>
+
 
 
 
@@ -427,6 +429,16 @@ status.innerHTML = `
     status.style.opacity = "0";
   }, 4000);
 });
+<script>
+  const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+  const btn = document.getElementById("download-btn");
+
+  if (isMobile && btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      alert("My Mate is a Windows desktop app.\nPlease open this page on a computer to download.");
+    });
+  }
 </script>
 
 
