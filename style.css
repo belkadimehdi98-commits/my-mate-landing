@@ -576,4 +576,8 @@ h1 {
     grid-template-columns: auto 1fr auto;
   }
 }
+.footer-right {
+  display: inline;
+}
+
 
