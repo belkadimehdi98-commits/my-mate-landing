@@ -571,4 +571,9 @@ h1 {
     font-size: 26px;
   }
 }
+@media (max-width: 700px) {
+  .footer-inner {
+    grid-template-columns: auto 1fr auto;
+  }
+}
 
