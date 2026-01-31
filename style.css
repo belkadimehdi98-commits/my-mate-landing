@@ -585,12 +585,17 @@ h1 {
 .navbar {
   position: absolute;
   top: 24px;
-  right: 32px;
+  left: 32px;   /* 👈 move to left */
   z-index: 10;
 }
 
 .logo {
-  width: 48px;
+  width: 72px;  /* 👈 bigger = more premium */
   height: auto;
-  opacity: 0.9;
 }
+.logo:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
