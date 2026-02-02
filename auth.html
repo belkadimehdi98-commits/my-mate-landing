@@ -60,15 +60,29 @@
     <div class="small">You can close this window after login.</div>
   </div>
 
-  <script>
-    const hash = window.location.hash;
+<script>
+  const hash = window.location.hash;
 
-    if (hash && hash.includes("access_token")) {
-      window.location.href = "memory-app://auth/callback" + hash;
-    } else {
-      document.getElementById("title").innerText = "Link expired";
-      document.getElementById("text").innerText = "Please request a new login email.";
-    }
-  </script>
+  if (hash && hash.includes("access_token")) {
+    window.location.href = "memory-app://auth/callback" + hash;
+
+    // After redirect, update UI
+    setTimeout(() => {
+      document.getElementById("title").innerText = "Account verified";
+      document.getElementById("text").innerText = "My Mate is now open.";
+      document.querySelector(".spinner").style.display = "none";
+    }, 1200);
+
+    // Then try to auto-close
+    setTimeout(() => {
+      window.close();
+    }, 2500);
+
+  } else {
+    document.getElementById("title").innerText = "Link expired";
+    document.getElementById("text").innerText = "Please request a new login email.";
+  }
+</script>
+
 </body>
 </html>
