@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Mate — Verifying…</title>
+</head>
+<body style="background:#0e0e0e;color:#fff;font-family:system-ui;padding:24px;">
+  <h2>Verifying your email…</h2>
+  <p>Please wait. You can close this tab when done.</p>
+
+  <script>
+    // Supabase sends tokens in the URL hash: #access_token=...&refresh_token=...&type=signup
+    const hash = window.location.hash || "";
+    if (!hash.includes("access_token=")) {
+      document.body.innerHTML += "<p style='color:#ff6b6b'>No token found. Please reopen the verification email.</p>";
+    } else {
+      // For now, just forward the full hash to your homepage (you can change the target later)
+      // This at least proves the link is not going to localhost anymore.
+      window.location.href = "/?verified=1" + hash;
+    }
+  </script>
+</body>
+</html>
