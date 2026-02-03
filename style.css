@@ -599,3 +599,45 @@ h1 {
   transition: 0.2s;
 }
 
+.trust-box {
+  margin-top: 18px;
+  text-align: center;
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.trust-note {
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.trust-details {
+  margin-top: 10px;
+}
+
+.trust-details summary {
+  cursor: pointer;
+  color: #7aa2ff;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.trust-steps {
+  margin-top: 16px;
+  display: grid;
+  gap: 20px;
+}
+
+.trust-step img {
+  max-width: 520px;
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 8px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+.trust-caption {
+  margin-top: 6px;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
