@@ -598,11 +598,4 @@ h1 {
   transform: scale(1.05);
   transition: 0.2s;
 }
-.security-note {
-  display: block !important;
-  margin-top: 14px;
-  font-size: 13px;
-  color: #9aa4b2;
-  opacity: 1 !important;
-}
 
