@@ -57,27 +57,39 @@
     <h2 id="title">Verifying your account</h2>
     <p id="text">Opening My Mate…</p>
     <div class="spinner"></div>
-    <div class="small">You can close this window after login.</div>
+<div class="small">You can close this window after login.</div>
+
+<button onclick="openApp()" style="
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #4f7cff;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+">
+  Open My Mate
+</button>
+
   </div>
 
 <script>
   const hash = window.location.hash;
 
-  if (hash && hash.includes("access_token")) {
-window.location.href = "com.mymate.app://auth/callback" + hash;
+  function openApp() {
+    window.location.href = "com.mymate.app://auth/callback" + hash;
+  }
 
-    // After redirect, update UI
+  if (hash && hash.includes("access_token")) {
+    // Try auto
+    openApp();
+
     setTimeout(() => {
       document.getElementById("title").innerText = "Account verified";
-      document.getElementById("text").innerText = "My Mate is now open.";
+      document.getElementById("text").innerText = "Click the button if the app didn't open.";
       document.querySelector(".spinner").style.display = "none";
     }, 1200);
-
-    // Then try to auto-close
-    setTimeout(() => {
-      window.close();
-    }, 2500);
-
   } else {
     document.getElementById("title").innerText = "Link expired";
     document.getElementById("text").innerText = "Please request a new login email.";
