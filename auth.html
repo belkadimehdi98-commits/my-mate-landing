@@ -83,7 +83,7 @@
 
   if (hash && hash.includes("access_token")) {
     // Try auto
-    openApp();
+setTimeout(openApp, 300);
 
     setTimeout(() => {
       document.getElementById("title").innerText = "Account verified";
