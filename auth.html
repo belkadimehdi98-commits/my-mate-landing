@@ -78,12 +78,17 @@
   const hash = window.location.hash;
 
   function openApp() {
+    console.log("OPENAPP CLICKED", {
+      href: window.location.href,
+      hash,
+      target: "com.mymate.app://auth/callback" + hash,
+    });
+
     window.location.href = "com.mymate.app://auth/callback" + hash;
   }
 
   if (hash && hash.includes("access_token")) {
-    // Try auto
-setTimeout(openApp, 300);
+    setTimeout(openApp, 300);
 
     setTimeout(() => {
       document.getElementById("title").innerText = "Account verified";
@@ -95,6 +100,7 @@ setTimeout(openApp, 300);
     document.getElementById("text").innerText = "Please request a new login email.";
   }
 </script>
+
 
 </body>
 </html>
