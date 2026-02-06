@@ -78,39 +78,28 @@
   const hash = window.location.hash;
 
   function openApp() {
+    console.log("OPENAPP CLICKED", {
+      href: window.location.href,
+      hash,
+      target: "com.mymate.app://auth/callback" + hash,
+    });
+
     window.location.href = "com.mymate.app://auth/callback" + hash;
   }
 
-  // PASSWORD RESET FLOW
-  if (hash && hash.includes("type=recovery")) {
-    document.getElementById("title").innerText = "Reset your password";
-    document.getElementById("text").innerText = "Opening password reset…";
-    document.querySelector(".spinner").style.display = "none";
-
-    setTimeout(() => {
-      window.location.href = "com.mymate.app://reset-password" + hash;
-    }, 400);
-  }
-
-  // NORMAL SIGNUP / MAGIC LINK FLOW (UNCHANGED)
-  else if (hash && hash.includes("access_token")) {
+  if (hash && hash.includes("access_token")) {
     setTimeout(openApp, 300);
 
     setTimeout(() => {
       document.getElementById("title").innerText = "Account verified";
-      document.getElementById("text").innerText =
-        "Click the button if the app didn't open.";
+      document.getElementById("text").innerText = "Click the button if the app didn't open.";
       document.querySelector(".spinner").style.display = "none";
     }, 1200);
-  }
-
-  else {
+  } else {
     document.getElementById("title").innerText = "Link expired";
-    document.getElementById("text").innerText =
-      "Please request a new login email.";
+    document.getElementById("text").innerText = "Please request a new login email.";
   }
 </script>
-
 
 
 </body>
