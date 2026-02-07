@@ -78,26 +78,29 @@
   const hash = window.location.hash;
 
   function openApp() {
-    console.log("OPENAPP CLICKED", {
-      href: window.location.href,
-      hash,
-      target: "com.mymate.app://auth/callback" + hash,
-    });
-
     window.location.href = "com.mymate.app://auth/callback" + hash;
   }
 
   if (hash && hash.includes("access_token")) {
-    setTimeout(openApp, 300);
 
-    setTimeout(() => {
+    const isOAuth = hash.includes("provider=");
+
+    if (isOAuth) {
+      document.getElementById("title").innerText = "Login successful";
+      document.getElementById("text").innerText = "Opening My Mate…";
+    } else {
       document.getElementById("title").innerText = "Account verified";
-      document.getElementById("text").innerText = "Your email is verified. Return to the My Mate app to continue.";
-      document.querySelector(".spinner").style.display = "none";
-    }, 1200);
+      document.getElementById("text").innerText =
+        "Your email is verified. Return to the My Mate app to continue.";
+    }
+
+    setTimeout(openApp, 300);
+    document.querySelector(".spinner").style.display = "none";
+
   } else {
     document.getElementById("title").innerText = "Link expired";
-    document.getElementById("text").innerText = "Please request a new login email.";
+    document.getElementById("text").innerText =
+      "Please request a new login email.";
   }
 </script>
 
