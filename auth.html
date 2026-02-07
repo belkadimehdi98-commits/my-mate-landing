@@ -76,16 +76,20 @@
 
 <script>
   const hash = window.location.hash;
+console.log("AUTH.HTML HASH =", hash);
 
-  function openApp() {
-    console.log("OPENAPP CLICKED", {
-      href: window.location.href,
-      hash,
-      target: "com.mymate.app://auth/callback" + hash,
-    });
+function openApp() {
+  console.log("OPENAPP CLICKED", {
+    href: window.location.href,
+    hash,
+    target: "com.mymate.app://auth/callback" + hash,
+  });
 
-    window.location.href = "com.mymate.app://auth/callback" + hash;
-  }
+  console.log("REDIRECTING TO APP NOW...");
+
+  window.location.href = "com.mymate.app://auth/callback" + hash;
+}
+
 
   if (hash && hash.includes("access_token")) {
     setTimeout(openApp, 300);
