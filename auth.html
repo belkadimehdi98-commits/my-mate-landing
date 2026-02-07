@@ -81,7 +81,7 @@
     // ✅ convert "#a=b&c=d" -> "?a=b&c=d" (Windows keeps query, may drop hash)
     const qs = hash.startsWith("#") ? "?" + hash.slice(1) : "";
 
-    const target = "com.mymate.app://auth/callback" + qs;
+const target = "memory-app://auth/callback" + qs;
 
     console.log("OPENAPP CLICKED", { target });
 
