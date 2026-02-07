@@ -75,28 +75,24 @@
   </div>
 
 <script>
-  function openApp() {
-    const hash = window.location.hash || "";
-
-    // ✅ convert "#a=b&c=d" -> "?a=b&c=d" (Windows keeps query, may drop hash)
-    const qs = hash.startsWith("#") ? "?" + hash.slice(1) : "";
-
-const target = "memory-app://auth/callback" + qs;
-
-    console.log("OPENAPP CLICKED", { target });
-
-    window.location.href = target;
-  }
-
   const hash = window.location.hash;
+
+  function openApp() {
+    console.log("OPENAPP CLICKED", {
+      href: window.location.href,
+      hash,
+      target: "com.mymate.app://auth/callback" + hash,
+    });
+
+    window.location.href = "com.mymate.app://auth/callback" + hash;
+  }
 
   if (hash && hash.includes("access_token")) {
     setTimeout(openApp, 300);
 
     setTimeout(() => {
       document.getElementById("title").innerText = "Account verified";
-      document.getElementById("text").innerText =
-        "Your email is verified. Return to the My Mate app to continue.";
+      document.getElementById("text").innerText = "Your email is verified. Return to the My Mate app to continue.";
       document.querySelector(".spinner").style.display = "none";
     }, 1200);
   } else {
