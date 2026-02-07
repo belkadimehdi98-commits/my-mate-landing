@@ -83,7 +83,7 @@
 
   if (hash && hash.includes("access_token")) {
 
-    const isOAuth = hash.includes("provider=");
+    const isOAuth = hash.includes("google");
 
     if (isOAuth) {
       document.getElementById("title").innerText = "Login successful";
@@ -103,6 +103,7 @@
       "Please request a new login email.";
   }
 </script>
+
 
 
 </body>
