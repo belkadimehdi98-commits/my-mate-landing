@@ -84,8 +84,7 @@
       target: "com.mymate.app://auth/callback" + hash,
     });
 
-window.location.href =
-  "com.mymate.app://auth/callback?" + hash.replace(/^#/, "");
+    window.location.href = "com.mymate.app://auth/callback" + hash;
   }
 
   if (hash && hash.includes("access_token")) {
