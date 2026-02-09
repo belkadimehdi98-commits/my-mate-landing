@@ -89,10 +89,13 @@ document.getElementById("text").innerText =
   "Email verified successfully. You can now return to My Mate and log in.";
       document.querySelector(".spinner").style.display = "none";
     }, 1200);
-  } else {
-    document.getElementById("title").innerText = "Link expired";
-    document.getElementById("text").innerText = "Please request a new login email.";
-  }
+} else {
+  document.getElementById("title").innerText = "Done";
+  document.getElementById("text").innerText =
+    "You can now return to the My Mate app and log in.";
+  document.querySelector(".spinner").style.display = "none";
+}
+
 </script>
 
 
