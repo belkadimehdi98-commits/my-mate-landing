@@ -69,7 +69,7 @@
   font-size: 14px;
   cursor: pointer;
 ">
-  Open My Mate
+Return to My Mate
 </button>
 
   </div>
@@ -96,7 +96,8 @@ window.location.href = "com.mymate.app://auth/callback" + hash;
 
     setTimeout(() => {
       document.getElementById("title").innerText = "Account verified";
-      document.getElementById("text").innerText = "Your email is verified. Return to the My Mate app to continue.";
+document.getElementById("text").innerText =
+  "Email verified successfully. You can now return to My Mate and log in.";
       document.querySelector(".spinner").style.display = "none";
     }, 1200);
   } else {
